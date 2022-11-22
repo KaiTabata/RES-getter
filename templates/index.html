@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RES-getter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  </head>
+  <body>
+    <section class="section">
+      <!--
+      <div class="container">
+        <h1 class="title">
+          RES-getter
+        </h1>
+      </div>
+      -->
+    </section>
+    <div class="columns is-centered">
+      <form method="POST" action="/result">
+        <div class="column">
+          <input class="input is-primary" type="text" placeholder="e.g. A/RES/70/1" name="doc">
+        </div>
+        <div class="column">
+          <input class="button is-primary" type="submit" id="SubmitButton" name="SubmitButton" value="Submit">
+        </div>
+        <div class="column">
+          {% if button == "on" %}
+          <button class="button is-primary" title="DownloadButton" id="DownloadButton" onclick="loction.href=url">{{DocNo}}</button>
+          {% else %}
+          <button class="button is-primary" title="DownloadButton" id="DownloadButton" disabled>Download</button>
+          {% endif %}
+        </div>
+      </form>
+      
+      </div>
+    </div>
+    
+    <script>
+       var url = JSON.stringify({DocURL});
+      </script>
+  </body>
+</html>
