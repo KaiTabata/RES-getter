@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RES-getter</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+      .footer {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        /* 必要に応じてz-indexプロパティを指定。 */
+        /* z-index: 99999; */
+      }
+    </style>
   </head>
   <body>
     <section class="section">
@@ -16,28 +26,43 @@
       </div>
       -->
     </section>
-    <div class="columns is-centered">
       <form method="POST" action="/result">
-        <div class="column">
+        <div class="column is-4 is-offset-4">
           <input class="input is-primary" type="text" placeholder="e.g. A/RES/70/1" name="doc">
         </div>
-        <div class="column">
+        <div class="column is-offset-4">
           <input class="button is-primary" type="submit" id="SubmitButton" name="SubmitButton" value="Submit">
-        </div>
-        <div class="column">
-          {% if button == "on" %}
-          <button class="button is-primary" title="DownloadButton" id="DownloadButton" onclick="loction.href=url">{{DocNo}}</button>
-          {% else %}
-          <button class="button is-primary" title="DownloadButton" id="DownloadButton" disabled>Download</button>
-          {% endif %}
-        </div>
+        </div> 
       </form>
-      
+
+      <div class="column is-offset-4 is-1">
+        {% if button == "on" %}
+        <a href="{{DocURL}}">
+          <div class="button is-primary" title="DownloadButton" id="DownloadButton" >{{DocNo}}</div>
+        </a>
+        {% else %}
+        <div class="button is-primary is-1" title="DownloadButton" id="DownloadButton" disabled>Download</div>
+        {% endif %}
       </div>
-    </div>
-    
-    <script>
-       var url = JSON.stringify({DocURL});
-      </script>
+
+      <footer class="footer">
+        <div class="column is-narrow">
+          <details>
+            <summary>ワードファイルのダウンロード方法</summary>
+            <p>Downloadボタンを押して表示されるURLを編集して下さい<br>
+            例：<br>
+            https://documents-dds-ny.un.org/doc/UNDOC/GEN/N15/291/89/PDF/N1529189.pdf?OpenElement <br>
+            を<br>
+            https://documents-dds-ny.un.org/doc/UNDOC/GEN/N15/291/89/<span style="color:red;">DOC</span>/N1529189.<span style="color:red;">docx</span>?OpenElement <br>
+            に編集する</p>
+          </details>
+        </div>
+        <div class="content has-text-centered">
+          <p>
+            <strong>RES-getter</strong> by <a href="https://www.instagram.com/kai_01public/">Kai Tabata</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+          </p>
+        </div>
+      </footer>
   </body>
 </html>
